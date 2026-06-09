@@ -1,0 +1,5 @@
+{
+  "name": "Reflective RAG: Self-Correcting Research Assistant",
+  "description": "An advanced AI research assistant that uses Reflective Retrieval-Augmented Generation to verify claims, reduce hallucinations, and provide grounded academic answers.",
+  "requestFramePermissions": []
+}

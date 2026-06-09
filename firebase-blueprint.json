@@ -1,0 +1,63 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "Public and private user information.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "displayName": { "type": "string" },
+        "email": { "type": "string" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "updatedAt"]
+    },
+    "QueryHistory": {
+      "title": "Query History",
+      "description": "Historical record of user research queries and results.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "query": { "type": "string" },
+        "answer": { "type": "string" },
+        "verifications": { 
+          "type": "array",
+          "items": { "type": "object" }
+        },
+        "sources": { 
+          "type": "array",
+          "items": { "type": "object" }
+        },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "query", "answer", "timestamp"]
+    },
+    "Feedback": {
+      "title": "User Feedback",
+      "description": "Feedback provided by users on query results.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "queryId": { "type": "string" },
+        "rating": { "type": "number" },
+        "comment": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "queryId", "rating", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Individual user profiles."
+    },
+    "/history/{historyId}": {
+      "schema": "QueryHistory",
+      "description": "Collection of research query history."
+    },
+    "/feedback/{feedbackId}": {
+      "schema": "Feedback",
+      "description": "User feedback on specific queries."
+    }
+  }
+}
